@@ -1,7 +1,7 @@
 variable "instance_type" {
-  description = "AMI to use for the instance."
+  description = "The instance type to use for the instance."
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "environment" {

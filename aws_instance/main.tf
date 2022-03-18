@@ -6,6 +6,7 @@ resource "aws_vpc" "demo" {
     Name        = "DemoVpc"
     Project     = "getting-started-terraform"
     Owner       = "Mark Carriedo"
+    Account     = local.account_id
     Environment = var.environment
   }
 }
@@ -15,16 +16,17 @@ resource "aws_subnet" "demo" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name        = "DemoSubnet1"
+    Name        = "DemoSubnet"
     Project     = "getting-started-terraform"
     Owner       = "Mark Carriedo"
+    Account     = local.account_id
     Environment = var.environment
   }
 }
 
 resource "aws_instance" "demo_server1" {
   ami           = "ami-036c62d1245305f42"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   subnet_id = aws_subnet.demo.id
 
@@ -40,6 +42,7 @@ resource "aws_instance" "demo_server1" {
     Name        = "DemoServer1"
     Project     = "getting-started-terraform"
     Owner       = "Mark Carriedo"
+    Account     = local.account_id
     Environment = var.environment
   }
 }
